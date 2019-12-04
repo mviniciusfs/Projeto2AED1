@@ -70,10 +70,10 @@ class MainClass
 
         //Salvando dados no arquivo;
         Administrador.AddPessoa(new Pessoa(nome, idade, cargo, salario, qtdFilhos));
-        List <Pessoa>Pessoas = Administrador.getListaPessoa();      
-        foreach(Pessoa pessoa in  Pessoas)
+        List <Responsavel>Responsaveis = Administrador.getListaResponsavel();      
+        foreach(Responsavel responsavel in  Responsaveis)
         {
-          x.WriteLine(pessoa.Imprimir().ToUpper());       
+          x.WriteLine(responsavel.Imprimir().ToUpper());       
         }
 
         x.Close();

@@ -5,16 +5,30 @@ static class Administrador
 
   {
     //Lista - dados da pessoa.
-    public static List<Pessoa>Pessoas = new List<Pessoa>();
+    public static List<Responsavel>Responsaveis = new List<Pessoa>();
 
     //Adicionar dados inseridos pelo operador do sistema.
-    public static void AddPessoa(Pessoa p1)
+    public static void AddResponsavel(Responsavel p1)
     {
-      Pessoas.Add(p1);
+      Responsaveis.Add(p1);
     }
 
-    public static List<Pessoa> getListaPessoa() 
+    public static List<Responsavel> getListaResponsavel() 
     {
-      return Pessoas;
-    }           
+      return Responsaveis;
+    }
+
+        //Lista - dados da pessoa.
+    public static List<Responsavel>Responsaveis = new List<Pessoa>();
+
+    //Adicionar dados inseridos pelo operador do sistema.
+    public static void AddResponsavel(Responsavel p1)
+    {
+      Responsaveis.Add(p1);
+    }
+
+    public static List<Responsavel> getListaResponsavel() 
+    {
+      return Responsaveis;
+    }            
   }
