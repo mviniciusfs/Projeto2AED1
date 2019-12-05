@@ -12,7 +12,7 @@ class MainClass
     Console.Write("Deseja cadastrar uma nova Pessoa? ");
     string cad = Console.ReadLine().ToUpper();
 
-    //Leitura dos dados;
+    //Entrada dos dados pelo usuário
     while(cad == "SIM" || cad == "S")
     {
       Console.Write("Digite o Nome: ");
@@ -45,8 +45,10 @@ class MainClass
       Console.Write("Digite a Quantidade de Filhos: ");
       int qtdFilhos = int.Parse(Console.ReadLine());
 
-      do{
-        try{
+      do
+      {
+        try
+        {
           Console.Write("Digite o Salário: ");
           salario = double.Parse(Console.ReadLine());
           invalido = false;
@@ -69,7 +71,7 @@ class MainClass
         x = File.AppendText(CaminhoNome);
 
         //Salvando dados no arquivo;
-        Administrador.AddPessoa(new Pessoa(nome, idade, cargo, salario, qtdFilhos));
+        Administrador.AddResponsavel(new Responsavel(nome, idade, cargo, salario, qtdFilhos));
         List <Responsavel>Responsaveis = Administrador.getListaResponsavel();      
         foreach(Responsavel responsavel in  Responsaveis)
         {
@@ -107,7 +109,7 @@ class MainClass
 
 
     //Cadastro de Filho - Herança
-    Console.Write("Deseja realizar o cadastro de filhos? ");
+    Console.Write("Deseja realizar o cadastro de filho(s)? ");
     string cad4 = Console.ReadLine().ToUpper();
 
     //Leitura dos dados;
@@ -115,6 +117,15 @@ class MainClass
     {
       Console.Write("Digite o Nome: ");
       string nome = Console.ReadLine();
+
+      Console.Write("Nome da Escola: : ");
+      string nome_sch = Console.ReadLine();
+
+      Console.Write("Digite a Série: ");
+      string serie_sch = Console.ReadLine();
+
+      Console.Write("Possui alguma deficiência: ");
+      string def_fis = Console.ReadLine();
 
       //Tratamento de exceções
       bool invalido = true;
@@ -143,7 +154,7 @@ class MainClass
       x = File.AppendText(CaminhoNome);
 
       //Salvando dados no arquivo;
-      Administrador.AddFilho(new Filho(nome, idade));
+      Administrador.AddFilho(new Filho(nome, idade, nome_sch, serie_sch, def_fis));
       List <Filho>Filhos = Administrador.getListaFilho();      
       foreach(Filho filho in  Filhos)
       {
@@ -155,7 +166,7 @@ class MainClass
       Console.Write("Possui mais algum filho?  ");
       string cad5 = Console.ReadLine().ToUpper();
 
-      if(cad5 == "NAO" || cad2 == "N")
+      if(cad5 == "NAO" || cad5 == "N")
       {
         break;
       }  

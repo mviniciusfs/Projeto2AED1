@@ -12,7 +12,7 @@ class Filho : Pessoa
     {
       base.Nome = n;
       base.Idade = i;
-      this.Escola = c;
+      this.Escola = e;
       this.Serie = s;
       this.Def_Fisica = d;
       
@@ -20,7 +20,7 @@ class Filho : Pessoa
 
     public string Imprimir()
     {
-      string dados = base.Imprimir() +"||"+ Escola +"||"+"Ano escolar: " Serie +"||"+"Possui Def. Física: " Def_Fisica +;
+      string dados = base.Imprimir() +"||"+ Escola +"||"+"Ano escolar: " + Serie +"||"+"Possui Def. Física: " + Def_Fisica;
 
       return dados;
     }    

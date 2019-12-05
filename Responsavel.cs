@@ -1,6 +1,6 @@
 using System;
 
-class Resposavel : Pessoa 
+class Responsavel : Pessoa 
 
   //Classe com atributos e método para imprimir dados no arquivo.
   {

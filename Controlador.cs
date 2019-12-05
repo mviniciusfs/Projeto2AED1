@@ -3,7 +3,7 @@ using System;
 static class Controlador 
 {
   //Validador baseado no salário para disponibilização do beneficio;
-  public static string ValidaBeneficio(Pessoa p)
+  public static string ValidaBeneficio(Responsavel p)
   {
     if(p.Salario <= 1000)
     {
@@ -27,7 +27,7 @@ static class Controlador
   }
 
   //Validador baseado no salário para disponibilização de bolsa familia;
-  public static string ValidaBolsaF(Pessoa bf)
+  public static string ValidaBolsaF(Responsavel bf)
   {
     if(bf.QtdFilhos >= 1)
     {
