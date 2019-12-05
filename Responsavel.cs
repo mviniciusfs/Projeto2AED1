@@ -20,7 +20,7 @@ class Responsavel : Pessoa
 
     public string Imprimir()
     {
-      string dados = base.Imprimir() +"||"+ Cargo +"||R$"+ Salario +",00||"+ QtdFilhos + " filho(s)";
+      string dados = base.Imprimir() +"||Cargo: "+ Cargo +"||R$"+ Salario +",00||"+ QtdFilhos + " filho(s)";
 
       return dados;
     }    

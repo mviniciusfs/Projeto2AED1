@@ -20,7 +20,7 @@ class Filho : Pessoa
 
     public string Imprimir()
     {
-      string dados = base.Imprimir() +"||"+ Escola +"||"+"Ano escolar: " + Serie +"||"+"Possui Def. Física: " + Def_Fisica;
+      string dados = base.Imprimir() +"|| Nome da Escolha: "+ Escola +"||"+"Ano escolar: " + Serie +"||"+"Possui Def. Física: " + Def_Fisica;
 
       return dados;
     }    

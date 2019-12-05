@@ -17,7 +17,7 @@ class Pessoa
           
     public string Imprimir()
     {
-      string dados = Nome +"||"+ Idade;
+      string dados = Nome +"||Idade: "+ Idade;
 
       return dados;
     }

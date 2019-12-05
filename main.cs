@@ -80,6 +80,80 @@ class MainClass
 
         x.Close();
 
+        if(qtdFilhos > 0)
+        {
+          //Cadastro de Filho - Herança
+          Console.Write("Deseja realizar o cadastro de filho(s) do {0}? ", nome);
+          string cad4 = Console.ReadLine().ToUpper();
+
+          //Leitura dos dados;
+          while(cad4 == "SIM" || cad4 == "S")
+          {
+            Console.Write("Digite o Nome: ");
+            string nome1 = Console.ReadLine();
+
+            Console.Write("Nome da Escola: : ");
+            string nome_sch = Console.ReadLine();
+
+            Console.Write("Digite a Série: ");
+            string serie_sch = Console.ReadLine();
+
+            Console.Write("Possui alguma deficiência: ");
+            string def_fis = Console.ReadLine();
+
+            //Tratamento de exceções
+            bool invalido1 = true;
+            int idade1 = 0;
+            
+            do
+            {
+              try
+              {
+                Console.Write("Digite a Idade: ");
+                idade = int.Parse(Console.ReadLine());
+                invalido = false;
+              }
+              catch (FormatException)
+              {
+                Console.WriteLine("Idade inválida, favor inserir novamente!");
+                invalido = true;
+              }
+            }
+            while (invalido);       
+                
+            //Salvando dados do filho
+            //Trabalhando com arquivo .txt
+            StreamWriter x1;
+            string CaminhoNome1 = "dadosfilhos.txt";
+            x = File.AppendText(CaminhoNome);
+
+            //Salvando dados no arquivo;
+            Administrador.AddFilho(new Filho(nome1, idade, nome_sch, serie_sch, def_fis));
+            List <Filho>Filhos = Administrador.getListaFilho();      
+            foreach(Filho filho in  Filhos)
+            {
+              x.WriteLine(filho.Imprimir().ToUpper());       
+            }
+
+            x.Close();
+
+            if(qtdFilhos >= 2)
+            {
+              Console.Write("Possui mais algum filho?  ");
+              string cad5 = Console.ReadLine().ToUpper();
+              
+              if(cad5 == "NAO" || cad5 == "N")
+              {
+                break;
+              } 
+
+            }
+
+          }
+
+        }  
+
+
         Console.Write("Deseja cadastrar uma nova Pessoa? ");
         string cad2 = Console.ReadLine().ToUpper();
 
@@ -108,70 +182,6 @@ class MainClass
     }
 
 
-    //Cadastro de Filho - Herança
-    Console.Write("Deseja realizar o cadastro de filho(s)? ");
-    string cad4 = Console.ReadLine().ToUpper();
-
-    //Leitura dos dados;
-    while(cad4 == "SIM" || cad4 == "S")
-    {
-      Console.Write("Digite o Nome: ");
-      string nome = Console.ReadLine();
-
-      Console.Write("Nome da Escola: : ");
-      string nome_sch = Console.ReadLine();
-
-      Console.Write("Digite a Série: ");
-      string serie_sch = Console.ReadLine();
-
-      Console.Write("Possui alguma deficiência: ");
-      string def_fis = Console.ReadLine();
-
-      //Tratamento de exceções
-      bool invalido = true;
-      int idade = 0;
-      
-      do
-      {
-        try
-        {
-          Console.Write("Digite a Idade: ");
-          idade = int.Parse(Console.ReadLine());
-          invalido = false;
-        }
-        catch (FormatException)
-        {
-          Console.WriteLine("Idade inválida, favor inserir novamente!");
-          invalido = true;
-        }
-      }
-      while (invalido);       
-           
-      //Salvando dados do filho
-      //Trabalhando com arquivo .txt
-      StreamWriter x;
-      string CaminhoNome = "dadosfilhos.txt";
-      x = File.AppendText(CaminhoNome);
-
-      //Salvando dados no arquivo;
-      Administrador.AddFilho(new Filho(nome, idade, nome_sch, serie_sch, def_fis));
-      List <Filho>Filhos = Administrador.getListaFilho();      
-      foreach(Filho filho in  Filhos)
-      {
-        x.WriteLine(filho.Imprimir().ToUpper());       
-      }
-
-      x.Close();
-
-      Console.Write("Possui mais algum filho?  ");
-      string cad5 = Console.ReadLine().ToUpper();
-
-      if(cad5 == "NAO" || cad5 == "N")
-      {
-        break;
-      }  
-
-    }    
     
     //Imprimir na tela os benefícios disponíveis;
     Console.WriteLine();
