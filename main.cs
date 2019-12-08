@@ -21,7 +21,7 @@ class MainClass
 
     z.Close();
     Console.WriteLine();
-    Console.WriteLine("           **Cadastro de Pessoas de baixa renda**");
+    Console.WriteLine("           **Cadastro de Pessoas baixa renda**");
     Console.WriteLine();
 
     Console.Write("Deseja cadastrar uma nova Pessoa? ");
@@ -34,7 +34,7 @@ class MainClass
       Environment.Exit(0);           
     }
 
-    if(cad == "S" || cad == "NAO")
+    if(cad == "S" || cad == "SIM")
     {
 
       //Entrada dos dados pelo usuário
@@ -117,50 +117,50 @@ class MainClass
               Console.Write("Digite o Nome: ");
               string nome1 = Console.ReadLine();
 
-              Console.Write("Nome da Escola: : ");
+              //Tratamento de exceções
+              bool invalido1 = true;
+              int idade1 = 0;
+
+              do
+              {
+                try
+                {
+                  Console.Write("Digite a Idade: ");
+                  idade1 = int.Parse(Console.ReadLine());
+                  invalido1 = false;
+                }
+                catch (FormatException)
+                {
+                  Console.WriteLine("Idade inválida, favor inserir novamente!");
+                  invalido1 = true;
+                }
+              }
+              while (invalido1);
+
+              Console.Write("Nome da Escola: ");
               string nome_sch = Console.ReadLine();
 
               Console.Write("Digite a Série: ");
               string serie_sch = Console.ReadLine();
 
               Console.Write("Possui alguma deficiência: ");
-              string def_fis = Console.ReadLine();
-
-              //Tratamento de exceções
-              //bool invalido1 = true;
-              //int idade1 = 0;
+              string def_fis = Console.ReadLine();             
               
-              do
-              {
-                try
-                {
-                  Console.Write("Digite a Idade: ");
-                  idade = int.Parse(Console.ReadLine());
-                  invalido = false;
-                }
-                catch (FormatException)
-                {
-                  Console.WriteLine("Idade inválida, favor inserir novamente!");
-                  invalido = true;
-                }
-              }
-              while (invalido);       
-                  
-              //Salvando dados do filho
-              //Trabalhando com arquivo .txt
-              //StreamWriter x1;
-              //string CaminhoNome1 = "dadosfilhos.txt";
-              //x = File.AppendText(CaminhoNome);
-
+              StreamWriter y;
+              string CaminhoNome2 = "dados.txt";
+              y = File.AppendText(CaminhoNome2);
+              
               //Salvando dados no arquivo;
-              Administrador.AddFilho(new Filho(nome1, idade, nome_sch, serie_sch, def_fis));
-              List <Filho>Filhos = Administrador.getListaFilho();      
+              Administrador.AddFilho(new Filho(nome1, idade1, nome_sch, serie_sch, def_fis));
+              List <Filho>Filhos = Administrador.getListaFilho ();      
               foreach(Filho filho in  Filhos)
               {
-                x.WriteLine(filho.Imprimir().ToUpper());       
+                y.WriteLine(filho.Imprimir().ToUpper()); 
               }
 
-              x.Close();
+              y.Close();
+
+              break;
 
               if(qtdFilhos >= 2)
               {
@@ -170,9 +170,7 @@ class MainClass
                 if(cad5 == "NAO" || cad5 == "N")
                 {
                   break;
-                }
-
-                 
+                }                
 
               }
 
@@ -189,7 +187,7 @@ class MainClass
           {
             break;
           }
-			//Usando tratamento de esceções
+			    //Usando tratamento de esceções
           else if(cad2 != "SIM" && cad2!= "S")
           {
             throw new System.ArgumentException("INVÁLIDO: Programa finalizado");
@@ -268,8 +266,8 @@ class MainClass
       Console.Write("********PROGRAMA FINALIZADO*********");
 
     }
-	//usando tratamento de exceções
-    else
+	  //usando tratamento de exceções
+    else if(resultfinal != "NAO" || resultfinal == "N" || resultfinal != "SIM" || resultfinal != "S")
     {
       throw new System.ArgumentException("INVÁLIDO: Programa finalizado");
     }
